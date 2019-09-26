@@ -1,0 +1,57 @@
+.form-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* essas duas linhas alinham verticalmente e horizontalmente */
+}
+
+.form-container h1 {
+    display: flex;
+    flex-direction: column;
+    margin-right: 70px;
+}
+
+.form-container form {
+    width: 100%;
+    max-width: 300px;
+}
+
+.row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 50%;
+  }
+
+.form-container form input, select {
+    margin: 5px 0 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 48px;
+    width: 240px;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
+    max-width: 280px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.form-container form input::placeholder{
+    color: #999;
+}
+
+.form-container form button {
+    margin-top: 10px;
+    border: 0;
+    border-radius: 4px;
+    height: 48px;
+    font-size: 16px;
+    background: #ebdb15;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 20px 0 20px;
+}
