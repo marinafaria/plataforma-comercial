@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 const app = express();
 const routes = require('./routes');
 
-mongoose.connect('mongodb+srv://Marina:cpejr123@cluster0-lvcfr.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://Marina:cpejr123@cluster0-lvcfr.mongodb.net/leads-app?retryWrites=true&w=majority', {
    useNewUrlParser: true 
 }).then(() => {
    console.log('Database connected!');
