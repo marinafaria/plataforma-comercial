@@ -29,18 +29,17 @@ export default function Form({ history }) {
       const boolean = [
         { id: true, name: 'Sim' },
         { id: false, name: 'Não' },
-        { id: false, name: 'Não sei' },
       ];
 
     async function handleSubmit(event){
         try {
             event.preventDefault();
-            const response = await api.post('/', { client: values });
-            //const { _id } = response.data.body;
-            history.push(`/clients`);
+            const response = await api.post('/', { lead: values });
+            history.push(`/leads`);
         }
         catch(error){
-            console.log('erro ao carregar a proxima pagina')
+            console.log('erro ao carregar a proxima pagina');
+            console.log(error)
         }
     }
 
@@ -66,11 +65,12 @@ export default function Form({ history }) {
                             required
                         />
                         <input
-                                placeholder="E-mail"
-                                value={ values.responsible }
-                                name="email"
-                                onChange = {handleInputChange} 
-                            />
+                            placeholder="E-mail"
+                            value={ values.email }
+                            name="email"
+                            onChange = {handleInputChange} 
+                            required
+                        />
                             {/* <p>{values.email}</p> */}
                         <input
                             placeholder="Telefone"
@@ -170,6 +170,12 @@ export default function Form({ history }) {
                         </select>	
                     </div>
                 </main>
+                <textarea
+                    placeholder="Detalhes"
+                    value={ values.details }
+                    name="details"
+                    onChange = {handleInputChange}  
+                 />
                 <button type="submit">Enviar</button>
             </form>
         </div>

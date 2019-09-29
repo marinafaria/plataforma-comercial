@@ -24,7 +24,7 @@
     flex: 50%;
   }
 
-.form-container form input, select {
+.form-container form input, select, textarea {
     margin: 5px 0 0 5px;
     border: 1px solid #ddd;
     border-radius: 4px;

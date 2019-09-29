@@ -30,9 +30,13 @@ module.exports = {
         const updateLead = await Lead.findByIdAndUpdate(id, user);
         return res.json(updateLead);
     },
-    // async newLeads(req, res) {
-    //     const leads = await Lead.find(lead => lead.responsible === '');
-
-    //     return res.json(leads);
-    // }
+    async newLeads(req, res) {
+        const leads = await Lead.find({ $or: [ { responsible: null }, { status: 'Retornar' } ] });
+        try{
+            return res.json(leads);
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
 };

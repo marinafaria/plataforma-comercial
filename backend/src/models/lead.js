@@ -9,10 +9,13 @@ const leadSchema = new Schema({
     },
     email: {
         type: String,
-        required: true,
         unique: true,
+        required: true
     },
-    avatar: String,
+    avatar: {
+        type: String,
+        default: 'https://myrealdomain.com/images/empty-profile-picture-4.gif'
+    },
     projectArea: String,
     phone: {
         type: String,
@@ -25,6 +28,12 @@ const leadSchema = new Schema({
     numberOfEmployees: Number,
     segment: String,
     responsible: String,
+    details: String,
+    status: {
+        type: String,
+        enum: ['Não iniciado', 'Retornar', 'Em progresso', 'Cancelado'],
+        default: 'Não iniciado'
+      }
 }, {
     timestamps:true,
 });
