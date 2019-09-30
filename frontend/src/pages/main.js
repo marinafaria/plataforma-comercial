@@ -12,9 +12,7 @@ export default function Main() {
             setLeads(response.data);
         }
         loadLeads();
-    }, 
-    // [match.params.id]
-    );  
+    }); 
     
     return(
         <div className="main-container">
@@ -27,16 +25,32 @@ export default function Main() {
                         <img src={lead.avatar} alt={lead.name} />
                         <footer>
                             <strong>{lead.name}</strong>
-                            <p>{lead.status}</p>
+                            <p className="status-badge">{lead.status}</p>
+                            { (lead.returnDate != null) 
+                                    ? <p className="status-badge">{lead.returnDate}</p>
+                                    : ''
+                                }
+                            <p>{lead._id}</p>
                             <p>{lead.details}</p>
                         </footer>
                         <div className="buttons">
                             <button type="button">
-                                Qualificação:
+                                Qualificação: <p>
+                                { lead.decisionMaker 
+                                    ? 'i'
+                                    : ''
+                                }
+                                { (lead.numberOfEmployees < 10)
+                                    ? 'i'
+                                    : ''
+                                }
+                                { lead.knowsAboutCPE
+                                    ? 'i'
+                                    : ''
+                                }
+                                </p>
                             </button>
-                            <button type="button">
-                                Editar
-                            </button>
+                                <button>Editar</button>
                         </div>
                     </li>
                 ))} 

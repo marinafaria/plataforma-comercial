@@ -4,7 +4,7 @@ const leadsController = require('./controllers/leadsController');
 
 routes.post('/', leadsController.store);
 routes.get('/leads', leadsController.newLeads);
-
+routes.get('/edit:id', leadsController.update)
 // tem que instalar o method-override pra funcionar
 // routes.put('/:id', clientsController.store);
 
