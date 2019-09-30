@@ -124,12 +124,6 @@ export default function Form({ history }) {
                             onChange = {handleInputChange} 
                             />
 
-                        <input
-                            placeholder="Cargo"
-                            value={ values.role }
-                            name="role"
-                            onChange = {handleInputChange} 
-                        />
                         <select 
                             placeholder="Como chegou"
                             value= { values.howItArrived }
@@ -167,15 +161,15 @@ export default function Form({ history }) {
                                     {boolean.name}
                                 </option>
                             ))}
-                        </select>	
+                        </select>
+                        <textarea
+                            placeholder="Detalhes"
+                            value={ values.details }
+                            name="details"
+                            onChange = {handleInputChange}  
+                        />	
                     </div>
                 </main>
-                <textarea
-                    placeholder="Detalhes"
-                    value={ values.details }
-                    name="details"
-                    onChange = {handleInputChange}  
-                 />
                 <button type="submit">Enviar</button>
             </form>
         </div>

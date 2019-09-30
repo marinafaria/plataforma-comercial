@@ -21,7 +21,6 @@ const leadSchema = new Schema({
         type: String,
         required:true,
     },
-    role: String,
     howItArrived: String,
     decisionMaker: Boolean,
     knowsAboutCPE: Boolean,
@@ -29,6 +28,7 @@ const leadSchema = new Schema({
     segment: String,
     responsible: String,
     details: String,
+    returnDate: Date,
     status: {
         type: String,
         enum: ['Não iniciado', 'Retornar', 'Em progresso', 'Cancelado'],
