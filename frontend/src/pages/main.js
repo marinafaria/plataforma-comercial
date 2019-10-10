@@ -3,11 +3,12 @@ import './main.css';
 import { Link } from 'react-router-dom';
 import api from '../services/api';
 
-export default function Main() {
+export default function Main( history ) {
     const [leads, setLeads] = useState([]);
+
     useEffect(() => {
         async function loadLeads() {
-            const response = await api.get('/leads', {
+            const response = await api.get('/attentionLeads', {
             })
             setLeads(response.data);
         }
@@ -16,9 +17,9 @@ export default function Main() {
     
     return(
         <div className="main-container">
-            <Link to="/">
+            {/* <Link to="/">
                 <button>Cadastro de Lead</button>
-            </Link> 
+            </Link>  */}
             <ul>
                 {leads.map(lead => ( /* map:serve pra percorrer um array e retornar algo */
                     <li key={lead._id}>
@@ -50,7 +51,11 @@ export default function Main() {
                                 }
                                 </p>
                             </button>
-                                <button>Editar</button>
+                            <button>
+                                <Link to={`/edit/${lead._id}`}>
+                                    Editar
+                                </Link>
+                            </button>
                         </div>
                     </li>
                 ))} 

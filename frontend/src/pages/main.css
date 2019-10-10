@@ -1,8 +1,10 @@
 .main-container {
-    max-width: 980px;
-    margin: 0 auto; /* centraliza no meio da tela */
-    padding: 50px 0;
+    max-width: 300px;
+    margin: 0 auto;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+    
 }
 
 .main-container button {
@@ -21,8 +23,8 @@
 .main-container ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
     margin-top: 50px;
 }
 

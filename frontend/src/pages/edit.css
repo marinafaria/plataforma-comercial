@@ -1,0 +1,47 @@
+.edit-container {
+    height: 100vh;
+    justify-content: center;
+    align-items: center; /* essas duas linhas alinham verticalmente e horizontalmente */
+}
+
+.edit-container h1 {
+    display: block;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+}
+  
+.column {
+    flex: 50%;
+}
+
+.edit-container form input, select, textarea {
+    margin: 5px 0 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 48px;
+    width: 240px;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
+    max-width: 280px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+
+.form-container form button {
+    margin-top: 10px;
+    border: 0;
+    border-radius: 4px;
+    height: 48px;
+    font-size: 16px;
+    background: #ebdb15;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 20px 0 20px;
+}
