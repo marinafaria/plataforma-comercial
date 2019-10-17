@@ -31,7 +31,7 @@ const leadSchema = new Schema({
     returnDate: Date,
     status: {
         type: String,
-        enum: ['Não iniciado', 'Retornar', 'Em progresso', 'Cancelado'],
+        enum: ['Não iniciado', 'Retornar', 'Em progresso', 'Assinado', 'Cancelado'],
         default: 'Não iniciado'
       }
 }, {

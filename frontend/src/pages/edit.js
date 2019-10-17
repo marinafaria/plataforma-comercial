@@ -3,7 +3,7 @@ import api from '../services/api';
 import './edit.css';
 
 export default function Edit( { match } ) {
-    const [lead, setLead] = useState([])
+    const [values, setValues] = useState({});
     const id = match.params.id;
 
     const portfolio = [
@@ -35,29 +35,57 @@ export default function Edit( { match } ) {
     useEffect(() => {
         async function loadLead() {
             const response = await api.put(`/update/${id}`);
-
-            console.log(response)
-            setLead(response.data);
+            setValues(response.data);
         }
         loadLead();
     }, [match.params._id]); 
+
+    function handleInputChange(event) {
+        event.persist();
+        setValues(values => ({
+            ...values,
+            [event.target.name]: event.target.value
+        }));
+    }
+
+    async function handleSubmit(event){
+        try {
+            event.preventDefault();
+            const response = await api.post('/', { lead: values });
+            // history.push(`/leads`);
+        }
+        catch(error){
+            console.log('erro ao carregar a proxima pagina');
+            console.log(error)
+        }
+    }
 
     return(
         <div className="edit-container">
             <h1>Editar Lead</h1>
             <form>
                 <label for="name">Nome</label>
-                <input id="name" type="text" value={lead.name} />
+                <input 
+                    id="name" 
+                    type="text" 
+                    defaultValue={values.name} 
+                    onChange = {handleInputChange}   
+                />
                 <label for="email">E-mail</label>
-                <input id="email" type="text" value={lead.email} />
+                <input 
+                    id="email" 
+                    type="text" 
+                    defaultValue={values.email} 
+                    onChange = {handleInputChange}  
+                />
                 <label for="phone">Telefone</label>
-                <input id="phone" type="text" value={lead.phone} />
+                <input id="phone" type="text" defaultValue={values.phone} />
                 <label for="projectArea">Área do Portfólio</label>
                 <select 
-                    value= { lead.projectArea }
+                    defaultValue= { values.projectArea }
                     name="projectArea"
                 >
-                    <option value={lead.projectArea} selected>{ lead.projectArea }</option>
+                    <option defaultValue={values.projectArea} selected>{ values.projectArea }</option>
                     {portfolio.map(portfolio => (
                         <option key={portfolio.id} value={portfolio.name}>
                             {portfolio.name}
@@ -66,10 +94,10 @@ export default function Edit( { match } ) {
                 </select>	
                 <label for="howItArrived">Como chegou</label>
                 <select 
-                    value= { lead.howItArrived }
+                    defaultValue= { values.howItArrived }
                     name="howItArrived"
                 >
-                    <option value={ lead.howItArrived } selected>{ lead.howItArrived }</option>
+                    <option value={ values.howItArrived } selected>{ values.howItArrived }</option>
                     {demandChannels.map(demandChannels => (
                         <option key={demandChannels.id} value={demandChannels.name}>
                             {demandChannels.name}
@@ -78,10 +106,10 @@ export default function Edit( { match } ) {
                 </select>
                 <label for="decisionMaker">Tomador de decisão?</label>
                 <select 
-                    value= { lead.decisionMaker }
+                    defaultValue= { values.decisionMaker }
                     name="decisionMaker"
                 >
-                    <option value= {lead.decisionMaker} selected>{ lead.decisionMaker }</option>
+                    <option value= {values.decisionMaker} selected>{ values.decisionMaker }</option>
                     {boolean.map(boolean => (
                         <option key={boolean.id} value={boolean.id}>
                             {boolean.name}
@@ -90,18 +118,18 @@ export default function Edit( { match } ) {
                 </select>
                 <label for="knowAboutCPE">Conhece MEJ, EJ...?</label>
                 <select 
-                    value= { lead.knowsAboutCPE }
+                    defaultValue= { values.knowsAboutCPE }
                     name="knowsAboutCPE"
                 >
-                    <option value={ lead.knowsAboutCPE } selected>{ lead.knowsAboutCPE }</option>
+                    <option value={ values.knowsAboutCPE } selected>{ values.knowsAboutCPE }</option>
                     {boolean.map(boolean => (
                         <option key={boolean.id} value={boolean.id}>
                             {boolean.name}
                         </option>
                     ))}
                 </select>
-                {/* <label for="segment">Segmento</label>
-                <input name="segment" type="text" value={ lead.segment }> { lead.segment } </input> */}
+                <label for="segment">Segmento</label>
+                {/* <input name="segment" type="text" defaultValye={ values.segment }> { values.segment } </input> */}
             </form>
         </div>
         );
