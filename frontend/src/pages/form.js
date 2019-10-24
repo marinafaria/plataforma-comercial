@@ -52,7 +52,7 @@ export default function Form({ history }) {
         }));
     }
 
-    return[
+    return(
         <div className="form-container">
             <h1>Cadastro de Leads/Clientes</h1>
             <form onSubmit={ handleSubmit }>
@@ -173,7 +173,7 @@ export default function Form({ history }) {
                 </main>
                 <button type="submit">Enviar</button>
             </form>
-        </div>,
-        <img src={logo} alt="logo" width="200" margin-top="-900"/>
-    ];
+          <img src={logo} class="logo"/>
+        </div>
+    );
 }
