@@ -50,6 +50,7 @@ export default function Form({ history }) {
             ...values,
             [event.target.name]: event.target.value
         }));
+        console.log(values.name);
     }
 
     return(
