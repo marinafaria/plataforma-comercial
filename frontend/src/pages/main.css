@@ -18,7 +18,7 @@
     border-radius: 4px;
     height: 48px;
     font-size: 16px;
-    background: #ebdb15;
+    background: #f5f5f5;
     font-weight: bold;
     color: #000;
     cursor: pointer;
@@ -33,11 +33,7 @@
 
 .main-container ul li {
     display: flex;
-    flex-direction: column; 
-    width: 80vw;
-    margin-left: 3vw;
-    margin-right: 3vw;
-    margin-top: 10vh;
+    flex-direction: column;
 }
 
 @media screen and (min-width: 1040px) {
@@ -107,6 +103,14 @@
     color: #fff;
 }
 
+.Tab {
+  position: flex;
+  background-color: #ebdb15;
+}
+
+.NavTabs{
+  background-color: blue;
+}
 .main-link {
     text-decoration: none;
     color: #000;

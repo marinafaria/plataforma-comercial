@@ -3,6 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center; /* essas duas linhas alinham verticalmente e horizontalmente */
+    color: #666;
+    background: linear-gradient(45deg, #ebdb15 27%, #ebdb15 27%, transparent 27%), linear-gradient(-45deg, #f2f2f2 00%, #f2f2f2 26%, #f2f2f2 26%)
+    /* background: #ebdb15; */
 }
 
 .form-container h1 {
@@ -19,7 +22,7 @@
 .row {
     display: flex;
   }
-  
+
   .column {
     flex: 50%;
   }
@@ -45,6 +48,7 @@
 
 .form-container form button {
     margin-top: 10px;
+    margin-left: 404px;
     border: 0;
     border-radius: 4px;
     height: 48px;
@@ -54,4 +58,11 @@
     color: #fff;
     cursor: pointer;
     padding: 0 20px 0 20px;
+}
+
+.logo{
+  position: absolute;
+  top: 63vh;
+  left: 1vw;
+  width: 200px;
 }

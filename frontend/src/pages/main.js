@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './main.css';
 import { Link } from 'react-router-dom';
 import api from '../services/api';
+import StarIcon from '@material-ui/icons/Star';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import moment from 'moment'
 import 'moment/locale/pt-br'
+
 
 export default function Main( history ) {
     const [leads, setLeads] = useState([]);
@@ -15,10 +20,19 @@ export default function Main( history ) {
             setLeads(response.data);
         }
         loadLeads();
-    }); 
-    
+    });
+
     return(
         <div className="main-container">
+        <AppBar>
+          <Tabs className="Tab">
+            <Link to="/"><Tab label="Cadastro de Lead" ClassName="NavTabs" /></Link>
+            {/* <Tab label="Responsável" />
+            <Tab label="Lista de Leads" />
+            <Tab label="Resultados" />*/}
+          </Tabs>
+        </AppBar>
+
             <h1>Leads saindo do forno</h1>
             <ul>
                 {leads.map(lead => (
@@ -27,6 +41,8 @@ export default function Main( history ) {
                         <footer>
                             <strong>{lead.name}</strong>
                             <p className="status-badge">{lead.status}</p>
+                            { (lead.returnDate != null)
+                                    ? <p className="status-badge">{lead.returnDate}</p>
                             { (lead.returnDate != null) 
                                     ? <p className="status-badge">{moment(lead.returnDate).calendar()}</p>
                                     : ''
@@ -36,16 +52,16 @@ export default function Main( history ) {
                         <div className="buttons">
                             <button type="button">
                                 Qualificação: <p>
-                                { lead.decisionMaker 
-                                    ? 'i'
+                                { lead.decisionMaker
+                                    ? <StarIcon />
                                     : ''
                                 }
                                 { (lead.numberOfEmployees < 10)
-                                    ? 'i'
+                                    ? <StarIcon />
                                     : ''
                                 }
                                 { lead.knowsAboutCPE
-                                    ? 'i'
+                                    ? <StarIcon />
                                     : ''
                                 }
                                 </p>
@@ -57,8 +73,8 @@ export default function Main( history ) {
                             </button>
                         </div>
                     </li>
-                ))} 
-            </ul>  
+                ))}
+            </ul>
         </div>
     );
 }
