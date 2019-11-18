@@ -6,16 +6,13 @@ import StarIcon from '@material-ui/icons/Star';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import moment from 'moment'
-import 'moment/locale/pt-br'
 
 
-export default function Main( history ) {
+export default function Main() {
     const [leads, setLeads] = useState([]);
-
     useEffect(() => {
         async function loadLeads() {
-            const response = await api.get('/attentionLeads', {
+            const response = await api.get('/leads', {
             })
             setLeads(response.data);
         }
@@ -33,9 +30,8 @@ export default function Main( history ) {
           </Tabs>
         </AppBar>
 
-            <h1>Leads saindo do forno</h1>
             <ul>
-                {leads.map(lead => (
+                {leads.map(lead => ( /* map:serve pra percorrer um array e retornar algo */
                     <li key={lead._id}>
                         <img src={lead.avatar} alt={lead.name} />
                         <footer>
@@ -43,10 +39,9 @@ export default function Main( history ) {
                             <p className="status-badge">{lead.status}</p>
                             { (lead.returnDate != null)
                                     ? <p className="status-badge">{lead.returnDate}</p>
-                            { (lead.returnDate != null) 
-                                    ? <p className="status-badge">{moment(lead.returnDate).calendar()}</p>
                                     : ''
                                 }
+                            <p>{lead._id}</p>
                             <p>{lead.details}</p>
                         </footer>
                         <div className="buttons">
@@ -66,11 +61,7 @@ export default function Main( history ) {
                                 }
                                 </p>
                             </button>
-                            <button>
-                                <Link to={`/edit/${lead._id}`} className="main-link">
-                                    Editar
-                                </Link>
-                            </button>
+                                <button>Editar</button>
                         </div>
                     </li>
                 ))}

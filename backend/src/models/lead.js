@@ -22,14 +22,8 @@ const leadSchema = new Schema({
         required:true,
     },
     howItArrived: String,
-    decisionMaker: {
-        type: Boolean,
-        default: false
-    },
-    knowsAboutCPE: {
-        type: Boolean,
-        default: false
-    },
+    decisionMaker: Boolean,
+    knowsAboutCPE: Boolean,
     numberOfEmployees: Number,
     segment: String,
     responsible: String,
@@ -37,7 +31,7 @@ const leadSchema = new Schema({
     returnDate: Date,
     status: {
         type: String,
-        enum: ['Não iniciado', 'Retornar', 'Em progresso', 'Assinado', 'Cancelado'],
+        enum: ['Não iniciado', 'Retornar', 'Em progresso', 'Cancelado'],
         default: 'Não iniciado'
       }
 }, {
