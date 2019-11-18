@@ -21,18 +21,15 @@ export default function Main() {
 
     return(
         <div className="main-container">
-        <AppBar position="static">
-          <Tabs>
-            <Link to="/"><Tab label="Cadastro de Lead"/></Link>
-            <Tab label="Responsável" />
+        <AppBar>
+          <Tabs className="Tab">
+            <Link to="/"><Tab label="Cadastro de Lead" ClassName="NavTabs" /></Link>
+            {/* <Tab label="Responsável" />
             <Tab label="Lista de Leads" />
-            <Tab label="Resultados" />
+            <Tab label="Resultados" />*/}
           </Tabs>
         </AppBar>
 
-            // <Link to="/">
-            //     <button>Cadastro de Lead</button>
-            // </Link>
             <ul>
                 {leads.map(lead => ( /* map:serve pra percorrer um array e retornar algo */
                     <li key={lead._id}>
