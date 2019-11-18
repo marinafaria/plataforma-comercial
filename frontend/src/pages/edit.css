@@ -1,20 +1,24 @@
 .edit-container {
     height: 100vh;
+    margin-top: 5vh;
     justify-content: center;
     align-items: center; /* essas duas linhas alinham verticalmente e horizontalmente */
 }
 
 .edit-container h1 {
-    display: block;
-    align-items: center;
+    text-align: center;
 }
 
-.row {
-    display: flex;
+
+.edit-container img {
+    max-width: 100%;
 }
-  
-.column {
-    flex: 50%;
+
+.edit-container form {
+    display:flex;
+    max-width: 100vw;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .edit-container form input, select, textarea {
@@ -32,8 +36,11 @@
     -webkit-box-sizing: border-box;
 }
 
+.edit-container p {
+    margin: 5px 0 0 5px;
+}
 
-.form-container form button {
+.edit-container form button {
     margin-top: 10px;
     border: 0;
     border-radius: 4px;
@@ -44,4 +51,23 @@
     color: #fff;
     cursor: pointer;
     padding: 0 20px 0 20px;
+}
+
+.avatar-box {
+    max-width: 300px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #fff;
+    margin: 5px 0 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 2vh;
+    border-radius: 10px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
 }

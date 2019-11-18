@@ -22,8 +22,14 @@ const leadSchema = new Schema({
         required:true,
     },
     howItArrived: String,
-    decisionMaker: Boolean,
-    knowsAboutCPE: Boolean,
+    decisionMaker: {
+        type: Boolean,
+        default: false
+    },
+    knowsAboutCPE: {
+        type: Boolean,
+        default: false
+    },
     numberOfEmployees: Number,
     segment: String,
     responsible: String,

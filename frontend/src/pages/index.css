@@ -1,18 +1,17 @@
-.main-container {
+.index-container {
     height: 100vh;
     margin-top: 5vh;
     justify-content: center;
     align-items: center;
     margin-left: 5vw;
     margin-right: 5vw;
-    
 }
 
-.main-container h1 {
+.index-container h1 {
     text-align: center;
 }
 
-.main-container button {
+.index-container button {
     margin-top: 10px;
     border: 0;
     border-radius: 4px;
@@ -25,13 +24,13 @@
     padding: 0 20px 0 20px;
 }
 
-.main-container ul {
+.index-container ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; 
 }
 
-.main-container ul li {
+.index-container ul li {
     display: flex;
     flex-direction: column; 
     width: 80vw;
@@ -41,7 +40,7 @@
 }
 
 @media screen and (min-width: 1040px) {
-    .main-container ul li {
+    .index-container ul li {
         width: 20vw;
         margin-left: 1vw;
         margin-right: 1vw;
@@ -49,13 +48,12 @@
     }
 }
 
-
-.main-container ul li img {
+.index-container ul li img {
     max-width: 100%;
     border-radius: 5px 5px 0 0;
 }
 
-.main-container ul li footer {
+.index-container ul li footer {
     flex: 1; /* não importa o tamanho da descrição, os botões vão ficar alinhados */
     background: #fff;
     border: 1px solid #eee;
@@ -64,26 +62,26 @@
     border-radius: 0 0 5px 5px;
 }
 
-.main-container ul li footer strong {
+.index-container ul li footer strong {
     font-size: 16px;
     color: #333;
 }
 
-.main-container ul li footer p {
+.index-container ul li footer p {
     font-size: 14px;
     line-height: 20px;
     color: #999;
     margin-top: 5px;
 }
 
-.main-container ul li .buttons {
+.index-container ul li .buttons {
     margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
 }
 
-.main-container ul li .buttons button {
+.index-container ul li .buttons button {
     height: 50px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
     border: none;
@@ -92,7 +90,7 @@
     cursor: pointer;
 }
 
-.main-container ul li .buttons button:hover img {
+.index-container ul li .buttons button:hover img {
     transform: translateY(-5px);
     transition: all 0.2s;
 
@@ -104,10 +102,10 @@
     display: inline;
     margin-left: 10px;
     padding: 3px 5px 3px 5px;
-    color: #fff;
+    color: #fff !important;
 }
 
-.main-link {
+.index-link {
     text-decoration: none;
     color: #000;
 }

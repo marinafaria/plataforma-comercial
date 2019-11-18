@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import './edit.css';
+import moment from 'moment'
+import 'moment/locale/pt-br'
 
-export default function Edit( { match } ) {
+export default function Edit( { match, history } ) {
     const [values, setValues] = useState({});
     const id = match.params.id;
 
@@ -13,6 +15,14 @@ export default function Edit( { match } ) {
         { id: 4, name: 'PE' },
         { id: 5, name: 'WEB' },
       ];
+
+    const status = [
+        { id: 1, name: 'Não iniciado' },
+        { id: 2, name: 'Retornar' },
+        { id: 3, name: 'Em progresso' },
+        { id: 4, name: 'Assinado' },
+        { id: 5, name: 'Cancelado' },
+    ];
 
     const demandChannels = [
         { id: 1, name: 'Desconhecido' },
@@ -34,7 +44,7 @@ export default function Edit( { match } ) {
 
     useEffect(() => {
         async function loadLead() {
-            const response = await api.put(`/update/${id}`);
+            const response = await api.get(`/user/${id}`);
             setValues(response.data);
         }
         loadLead();
@@ -46,13 +56,21 @@ export default function Edit( { match } ) {
             ...values,
             [event.target.name]: event.target.value
         }));
+            // console.log(values.name);
+            // console.log(event.target.name);
+            // console.log(event.target);
+            // console.log(values);
     }
 
     async function handleSubmit(event){
         try {
             event.preventDefault();
-            const response = await api.post('/', { lead: values });
-            // history.push(`/leads`);
+            
+            const response = await api.put(`/update/${id}`, { user: values });
+            console.log(values);
+            console.log('clique')
+            // console.log(response);
+            history.push(`/leads`);
         }
         catch(error){
             console.log('erro ao carregar a proxima pagina');
@@ -63,73 +81,152 @@ export default function Edit( { match } ) {
     return(
         <div className="edit-container">
             <h1>Editar Lead</h1>
-            <form>
-                <label for="name">Nome</label>
-                <input 
-                    id="name" 
-                    type="text" 
-                    defaultValue={values.name} 
-                    onChange = {handleInputChange}   
-                />
-                <label for="email">E-mail</label>
-                <input 
-                    id="email" 
-                    type="text" 
-                    defaultValue={values.email} 
-                    onChange = {handleInputChange}  
-                />
-                <label for="phone">Telefone</label>
-                <input id="phone" type="text" defaultValue={values.phone} />
-                <label for="projectArea">Área do Portfólio</label>
-                <select 
-                    defaultValue= { values.projectArea }
-                    name="projectArea"
-                >
-                    <option defaultValue={values.projectArea} selected>{ values.projectArea }</option>
-                    {portfolio.map(portfolio => (
-                        <option key={portfolio.id} value={portfolio.name}>
-                            {portfolio.name}
-                        </option>
-                    ))}
-                </select>	
-                <label for="howItArrived">Como chegou</label>
-                <select 
-                    defaultValue= { values.howItArrived }
-                    name="howItArrived"
-                >
-                    <option value={ values.howItArrived } selected>{ values.howItArrived }</option>
-                    {demandChannels.map(demandChannels => (
-                        <option key={demandChannels.id} value={demandChannels.name}>
-                            {demandChannels.name}
-                        </option>
-                    ))}
-                </select>
-                <label for="decisionMaker">Tomador de decisão?</label>
-                <select 
-                    defaultValue= { values.decisionMaker }
-                    name="decisionMaker"
-                >
-                    <option value= {values.decisionMaker} selected>{ values.decisionMaker }</option>
-                    {boolean.map(boolean => (
-                        <option key={boolean.id} value={boolean.id}>
-                            {boolean.name}
-                        </option>
-                    ))}
-                </select>
-                <label for="knowAboutCPE">Conhece MEJ, EJ...?</label>
-                <select 
-                    defaultValue= { values.knowsAboutCPE }
-                    name="knowsAboutCPE"
-                >
-                    <option value={ values.knowsAboutCPE } selected>{ values.knowsAboutCPE }</option>
-                    {boolean.map(boolean => (
-                        <option key={boolean.id} value={boolean.id}>
-                            {boolean.name}
-                        </option>
-                    ))}
-                </select>
-                <label for="segment">Segmento</label>
-                {/* <input name="segment" type="text" defaultValye={ values.segment }> { values.segment } </input> */}
+            <form onSubmit={ handleSubmit }>
+                <section className="avatar-box">
+                    <img src= { values.avatar } alt="avatar" />
+                    <input 
+                            type="text" 
+                            name="avatar"
+                            value={ values.avatar } 
+                            onChange = { handleInputChange }   
+                        />
+                </section>
+                <section className="box">
+                    <p>Nome</p>
+                    <input 
+                        id="name" 
+                        type="text" 
+                        name="name"
+                        value={ values.name } 
+                        onChange = { handleInputChange }   
+                    />
+
+                    <p>E-mail</p>
+                    <input 
+                        id="email" 
+                        name="email"
+                        type="text" 
+                        value={values.email} 
+                        onChange = {handleInputChange}  
+                    />
+                    <p>Telefone</p>
+                    <input 
+                        id="phone" 
+                        name="phone"
+                        type="text"
+                        value={values.phone} 
+                        onChange = {handleInputChange} />
+                    <p>Área do Portfólio</p>
+                    <select 
+                        value= { values.projectArea }
+                        name="projectArea"
+                        onChange = {handleInputChange}
+                    >
+                        {portfolio.map(portfolio => (
+                            <option 
+                            key={ portfolio.id }
+                            value={ portfolio.name }>
+                                { portfolio.name }
+                            </option>
+                        ))}
+                    </select>
+                    <p>Como chegou</p>
+                    <select 
+                        value= { values.howItArrived }
+                        name="howItArrived"
+                        onChange = {handleInputChange}
+                    >
+                        {demandChannels.map(demandChannels => (
+                            <option 
+                            key={ demandChannels.id }
+                            value={ demandChannels.name }>
+                                { demandChannels.name }
+                            </option>
+                        ))}
+                    </select>
+                </section>
+                <section className="box">
+                    <p>Tomador de decisão?</p>
+                    <select 
+                        value= { values.decisionMaker }
+                        name="decisionMaker"
+                        onChange = { handleInputChange }
+                    >
+                        {boolean.map(boolean => (
+                            <option 
+                            key={ boolean.id }
+                            value={ boolean.id }>
+                                { boolean.name }
+                            </option>
+                        ))}
+                    </select>
+                    <p>Conhece MEJ, EJ...?</p>
+                    <select 
+                        value= { values.knowsAboutCPE }
+                        name="knowsAboutCPE"
+                        onChange = { handleInputChange }
+                    >
+                        {boolean.map(boolean => (
+                            <option 
+                            key={ boolean.id }
+                            value={ boolean.id }>
+                                { boolean.name }
+                            </option>
+                        ))}
+                    </select>
+                    <p>Segmento</p>
+                    <input 
+                        name="segment" 
+                        type="text" 
+                        value={ values.segment } 
+                        onChange = { handleInputChange }
+                    />
+                    <p>Responsável pelo Lead</p>
+                    <input 
+                        name="responsible" 
+                        type="text" 
+                        value={ values.responsible } 
+                        onChange = { handleInputChange }
+                    />
+                    <p>Detalhes</p>
+                    <textarea 
+                        name="details" 
+                        type="text" 
+                        value={ values.details } 
+                        onChange = { handleInputChange }
+                    />
+                </section>
+                <section className="box">
+                    <p>Data de retorno</p>
+                    <input 
+                        name="returnDate" 
+                        type="date" 
+                        value={values.returnDate}
+                        onChange = { handleInputChange }
+                    />
+                    <p>Número de pessoas na empresa</p>
+                    <input 
+                        name="numberOfEmployees" 
+                        type="text" 
+                        value={ values.numberOfEmployees } 
+                        onChange = { handleInputChange }
+                    />
+                    <p>Status</p>
+                    <select 
+                        value= { values.status }
+                        name="status"
+                        onChange = { handleInputChange }
+                    >
+                        {status.map(status => (
+                            <option 
+                            key={ status.id }
+                            value={ status.name }>
+                                { status.name }
+                            </option>
+                        ))}
+                    </select>
+                    <button type="submit">Enviar</button>
+                </section>
             </form>
         </div>
         );
