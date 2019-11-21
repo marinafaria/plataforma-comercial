@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './form.css';
 import api from '../services/api';
-import logo from './logo.png';
 
 export default function Form({ history }) {
     const [values, setValues] = useState({});
@@ -62,14 +61,14 @@ export default function Form({ history }) {
                             placeholder="Nome"
                             value={ values.name }
                             name="name"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange}  
                             required
                         />
                         <input
                             placeholder="E-mail"
                             value={ values.email }
                             name="email"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange} 
                             required
                         />
                             {/* <p>{values.email}</p> */}
@@ -77,7 +76,7 @@ export default function Form({ history }) {
                             placeholder="Telefone"
                             value={ values.phone }
                             name="phone"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange}  
                             required
                         />
                         {/* <p>{values.phone}</p> */}
@@ -85,19 +84,19 @@ export default function Form({ history }) {
                             placeholder="Link pra foto"
                             value={ values.avatar }
                             name="avatar"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange}  
                         />
                         {/* <img src={values.avatar} alt={values.name} /> */}
                         <input
                             placeholder="Responsável pelo lead"
                             value={ values.responsible }
                             name="responsible"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange} 
                         />
-                        <select
+                        <select 
                             value= { values.projectArea }
                             name="projectArea"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange} 
                             required
                         >
 
@@ -107,29 +106,29 @@ export default function Form({ history }) {
                                     {portfolio.name}
                                 </option>
                             ))}
-                        </select>
+                        </select>	
                     </div>
-
+                    
 
                     <div className="column">
                         <input
                             placeholder="Número de funcionários"
                             value={ values.numberOfEmployees }
                             name="numberOfEmployees"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange}  
                             />
                         <input
                             placeholder="Segmento"
                             value={ values.segment }
                             name="segment"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange} 
                             />
 
-                        <select
+                        <select 
                             placeholder="Como chegou"
                             value= { values.howItArrived }
                             name="howItArrived"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange} 
                             required
                         >
                         <option value="" disabled selected>-- Como chegou --</option>
@@ -138,11 +137,11 @@ export default function Form({ history }) {
                                     {demandChannels.name}
                                 </option>
                             ))}
-                        </select>
-                        <select
+                        </select>	
+                        <select 
                             value= { values.decisionMaker }
                             name="decisionMaker"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange} 
                         >
                             <option value="" disabled selected>-- Tomador de decisão? --</option>
                             {boolean.map(boolean => (
@@ -151,10 +150,10 @@ export default function Form({ history }) {
                                 </option>
                             ))}
                         </select>
-                        <select
+                        <select 
                             value= { values.knowsAboutCPE }
                             name="knowsAboutCPE"
-                            onChange = {handleInputChange}
+                            onChange = {handleInputChange} 
                         >
                             <option value="" disabled selected>-- Conhece o MEJ, como a CPE funciona, etc? --</option>
                             {boolean.map(boolean => (
@@ -167,13 +166,12 @@ export default function Form({ history }) {
                             placeholder="Detalhes"
                             value={ values.details }
                             name="details"
-                            onChange = {handleInputChange}
-                        />
+                            onChange = {handleInputChange}  
+                        />	
                     </div>
                 </main>
                 <button type="submit">Enviar</button>
             </form>
-          <img src={logo} class="logo"/>
         </div>
     );
 }

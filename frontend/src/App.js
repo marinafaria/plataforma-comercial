@@ -3,7 +3,6 @@ import './App.css';
 import Routes from './routes.js';
 require('dotenv').config();
 
-
 function App() {
   return (
     <Routes />

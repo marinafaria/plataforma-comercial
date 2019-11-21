@@ -3,12 +3,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const methodOverride = require('method-override');
 
-require('dotenv').config();
-
 const app = express();
 const routes = require('./routes');
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_SERVER}/${process.env.MONGO_DATABASE}?${process.env.MONGO_OPTIONS}`, {
+mongoose.connect('mongodb+srv://Marina:cpejr123@cluster0-lvcfr.mongodb.net/leads-app?retryWrites=true&w=majority', {
    useNewUrlParser: true 
 }).then(() => {
    console.log('Database connected!');
