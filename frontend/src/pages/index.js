@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import './main.css';
-import { Link } from 'react-router-dom';
-import api from '../services/api';
+import './index.css';
 import moment from 'moment'
 import 'moment/locale/pt-br'
+import { Link } from 'react-router-dom';
+import api from '../services/api';
 
-export default function Main( history ) {
+
+export default function Index( history ) {
     const [leads, setLeads] = useState([]);
 
     useEffect(() => {
         async function loadLeads() {
-            const response = await api.get('/attentionLeads', {
+            const response = await api.get('/index', {
             })
             setLeads(response.data);
         }
         loadLeads();
-    }); 
+    });
     
     return(
-        <div className="main-container">
-            <h1>Leads saindo do forno</h1>
+        <div className="index-container">
+            <h1>Lista de Leads</h1>
             <ul>
-                {leads.map(lead => (
+                {leads.map(lead => ( /* map:serve pra percorrer um array e retornar algo */
                     <li key={lead._id}>
                         <img src={lead.avatar} alt={lead.name} />
                         <footer>
@@ -51,7 +52,7 @@ export default function Main( history ) {
                                 </p>
                             </button>
                             <button>
-                                <Link to={`/edit/${lead._id}`} className="main-link">
+                                <Link to={`/edit/${lead._id}`} className="index-link">
                                     Editar
                                 </Link>
                             </button>
