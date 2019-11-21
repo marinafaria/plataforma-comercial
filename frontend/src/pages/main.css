@@ -107,6 +107,15 @@
     color: #fff;
 }
 
+
+.Tab {
+  position: flex;
+  background-color: #ebdb15;
+}
+
+.NavTabs{
+  background-color: black;
+
 .main-link {
     text-decoration: none;
     color: #000;
