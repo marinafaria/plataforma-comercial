@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import api from '../services/api';
 import moment from 'moment'
 import 'moment/locale/pt-br'
+import StarIcon from '@material-ui/icons/Star';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
 
 export default function Main( history ) {
     const [leads, setLeads] = useState([]);
@@ -19,6 +24,14 @@ export default function Main( history ) {
     
     return(
         <div className="main-container">
+            <AppBar>
+            <Tabs className="Tab">
+                <Link to="/"><Tab label="Cadastro de Lead" ClassName="NavTabs" /></Link>
+                {/* <Tab label="Responsável" />
+                <Tab label="Lista de Leads" />
+                <Tab label="Resultados" />*/}
+            </Tabs>
+            </AppBar>
             <h1>Leads saindo do forno</h1>
             <ul>
                 {leads.map(lead => (
@@ -38,15 +51,15 @@ export default function Main( history ) {
                             <button type="button">
                                 Qualificação: <p>
                                 { lead.decisionMaker 
-                                    ? 'i'
+                                    ? <StarIcon />
                                     : ''
                                 }
                                 { (lead.numberOfEmployees < 10)
-                                    ? 'i'
+                                    ? <StarIcon />
                                     : ''
                                 }
                                 { lead.knowsAboutCPE
-                                    ? 'i'
+                                    ? <StarIcon />
                                     : ''
                                 }
                                 </p>

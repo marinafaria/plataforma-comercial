@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './form.css';
 import api from '../services/api';
+import logo from './logo.png';
 
 export default function Form({ history }) {
     const [values, setValues] = useState({});
@@ -172,6 +173,7 @@ export default function Form({ history }) {
                     </div>
                 </main>
                 <button type="submit">Enviar</button>
+                <img src={logo} class="logo"/>
             </form>
         </div>
     );
