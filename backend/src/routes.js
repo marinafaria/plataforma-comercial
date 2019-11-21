@@ -3,10 +3,10 @@ const routes = express.Router();
 const leadsController = require('./controllers/leadsController');
 
 routes.post('/', leadsController.store);
-routes.get('/leads', leadsController.newLeads);
-routes.get('/edit:id', leadsController.update)
-// tem que instalar o method-override pra funcionar
-// routes.put('/:id', clientsController.store);
+routes.get('/attentionLeads', leadsController.newLeads);
+routes.get('/user/:id', leadsController.user)
+routes.get('/index', leadsController.index)
+routes.put('/update/:id', leadsController.update)
 
 module.exports = routes;
     
