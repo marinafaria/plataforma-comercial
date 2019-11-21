@@ -41,7 +41,7 @@ export default function Main() {
                                     ? <p className="status-badge">{lead.returnDate}</p>
                                     : ''
                                 }
-                            <p>{lead._id}</p>
+                            <p>oi</p>
                             <p>{lead.details}</p>
                         </footer>
                         <div className="buttons">
