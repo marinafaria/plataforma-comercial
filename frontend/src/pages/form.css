@@ -55,3 +55,10 @@
     cursor: pointer;
     padding: 0 20px 0 20px;
 }
+
+.logo{
+  position: absolute;
+  top: 63vh;
+  left: 2vw;
+  width: 200px;
+}

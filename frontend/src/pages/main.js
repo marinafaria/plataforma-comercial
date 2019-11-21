@@ -31,6 +31,7 @@ export default function Main( history ) {
                                     ? <p className="status-badge">{moment(lead.returnDate).calendar()}</p>
                                     : ''
                                 }
+                            <p>oi</p>
                             <p>{lead.details}</p>
                         </footer>
                         <div className="buttons">
