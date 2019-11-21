@@ -6,7 +6,14 @@ export default function Auth() {
 
     return(
         <div className="auth-container">
-
+            <form>
+                <input 
+                    type="text" 
+                    placeholder="usuario" />
+                <input 
+                    type="password" 
+                    placeholder="senha" />
+            </form>
         </div>
     );
 }
