@@ -7,6 +7,14 @@
 
 .edit-container h1 {
     text-align: center;
+    margin-top:15vh;
+    margin-bottom: 1vh;
+}
+
+@media screen and (min-width: 1040px) {
+    .form-container h1{
+        margin-top:10vh;
+    }
 }
 
 
@@ -21,7 +29,7 @@
     flex-wrap: wrap;
 }
 
-.edit-container form input, select, textarea {
+.edit-container form select,  .edit-container form input, .edit-container form textarea {
     margin: 5px 0 0 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -30,7 +38,6 @@
     padding: 0 20px;
     font-size: 16px;
     color: #666;
-    max-width: 280px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;

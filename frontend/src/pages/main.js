@@ -25,12 +25,11 @@ export default function Main( history ) {
     return(
         <div className="main-container">
             <AppBar>
-            <Tabs className="Tab">
-                <Link to="/"><Tab label="Cadastro de Lead" ClassName="NavTabs" /></Link>
-                {/* <Tab label="Responsável" />
-                <Tab label="Lista de Leads" />
-                <Tab label="Resultados" />*/}
-            </Tabs>
+                <Tabs value="main-tab" className="Tab" centered>
+                    <Link value="new-tab" to="/new" className="main-link"><Tab value="new-tab" label="Cadastro de lead" className="NavTabs" /></Link>
+                    <Link value="leads-tab" to="/leads" className="main-link"><Tab value="leads-tab" label="Lista de leads" className="NavTabs" /></Link>
+                    <Link value="main-tab" to="/main" className="main-link"><Tab value="main-tab" label="Leads novos" className="NavTabs" /></Link>
+                </Tabs>
             </AppBar>
             <h1>Leads saindo do forno</h1>
             <ul>
@@ -48,7 +47,7 @@ export default function Main( history ) {
                             <p>{lead.details}</p>
                         </footer>
                         <div className="buttons">
-                            <button type="button">
+                            <button type="button" className="card-button">
                                 Qualificação: <p>
                                 { lead.decisionMaker 
                                     ? <StarIcon />
@@ -64,7 +63,7 @@ export default function Main( history ) {
                                 }
                                 </p>
                             </button>
-                            <button>
+                            <button type="button" className="card-button">
                                 <Link to={`/edit/${lead._id}`} className="main-link">
                                     Editar
                                 </Link>

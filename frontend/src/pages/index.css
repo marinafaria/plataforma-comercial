@@ -9,10 +9,15 @@
 
 .index-container h1 {
     text-align: center;
+    margin-top:15vh;
 }
 
-.index-container button {
-    margin-top: 10px;
+@media screen and (min-width: 1040px) {
+    .form-container h1{
+        margin-top:10vh;
+    }
+}
+.card-button {
     border: 0;
     border-radius: 4px;
     height: 48px;
@@ -22,12 +27,14 @@
     color: #000;
     cursor: pointer;
     padding: 0 20px 0 20px;
+    margin-bottom: 3vh;
 }
 
 .index-container ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; 
+    justify-content: center;
 }
 
 .index-container ul li {
@@ -109,3 +116,5 @@
     text-decoration: none;
     color: #000;
 }
+
+

@@ -4,6 +4,10 @@ import moment from 'moment'
 import 'moment/locale/pt-br'
 import { Link } from 'react-router-dom';
 import api from '../services/api';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import StarIcon from '@material-ui/icons/Star';
 
 
 export default function Index( history ) {
@@ -20,6 +24,13 @@ export default function Index( history ) {
     
     return(
         <div className="index-container">
+            <AppBar>
+                <Tabs value="leads-tab" className="Tab" centered>
+                    <Link value="new-tab" to="/new" className="index-link"><Tab value="new-tab" label="Cadastro de lead" className="NavTabs" /></Link>
+                    <Link value="leads-tab" to="/leads" className="index-link"><Tab value="leads-tab" label="Lista de leads" className="NavTabs" /></Link>
+                    <Link value="main-tab" to="/main" className="index-link"><Tab value="main-tab" label="Leads novos" className="NavTabs" /></Link>
+                </Tabs>
+            </AppBar>
             <h1>Lista de Leads</h1>
             <ul>
                 {leads.map(lead => ( /* map:serve pra percorrer um array e retornar algo */
@@ -35,23 +46,23 @@ export default function Index( history ) {
                             <p>{lead.details}</p>
                         </footer>
                         <div className="buttons">
-                            <button type="button">
+                            <button type="button" className="card-button">
                                 Qualificação: <p>
                                 { lead.decisionMaker 
-                                    ? 'i'
+                                    ? <StarIcon />
                                     : ''
                                 }
                                 { (lead.numberOfEmployees < 10)
-                                    ? 'i'
+                                    ? <StarIcon />
                                     : ''
                                 }
                                 { lead.knowsAboutCPE
-                                    ? 'i'
+                                    ? <StarIcon />
                                     : ''
                                 }
                                 </p>
                             </button>
-                            <button>
+                            <button className="card-button">
                                 <Link to={`/edit/${lead._id}`} className="index-link">
                                     Editar
                                 </Link>
