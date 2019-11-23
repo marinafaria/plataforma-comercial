@@ -1,0 +1,120 @@
+.index-container {
+    height: 100vh;
+    margin-top: 5vh;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.index-container h1 {
+    text-align: center;
+    margin-top:15vh;
+}
+
+@media screen and (min-width: 1040px) {
+    .form-container h1{
+        margin-top:10vh;
+    }
+}
+.card-button {
+    border: 0;
+    border-radius: 4px;
+    height: 48px;
+    font-size: 16px;
+    background: #ebdb15;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    padding: 0 20px 0 20px;
+    margin-bottom: 3vh;
+}
+
+.index-container ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+
+.index-container ul li {
+    display: flex;
+    flex-direction: column; 
+    width: 80vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-top: 10vh;
+}
+
+@media screen and (min-width: 1040px) {
+    .index-container ul li {
+        width: 20vw;
+        margin-left: 1vw;
+        margin-right: 1vw;
+        margin-top: 5vh;
+    }
+}
+
+.index-container ul li img {
+    max-width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.index-container ul li footer {
+    flex: 1; /* não importa o tamanho da descrição, os botões vão ficar alinhados */
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 15px 20px;
+    text-align: left;
+    border-radius: 0 0 5px 5px;
+}
+
+.index-container ul li footer strong {
+    font-size: 16px;
+    color: #333;
+}
+
+.index-container ul li footer p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+    margin-top: 5px;
+}
+
+.index-container ul li .buttons {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.index-container ul li .buttons button {
+    height: 50px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.index-container ul li .buttons button:hover img {
+    transform: translateY(-5px);
+    transition: all 0.2s;
+
+}
+
+.status-badge {
+    background-color: #ebdb15;
+    border-radius: 4px;
+    display: inline;
+    margin-left: 10px;
+    padding: 3px 5px 3px 5px;
+    color: #fff !important;
+}
+
+.index-link {
+    text-decoration: none;
+    color: #000;
+}
+
+
