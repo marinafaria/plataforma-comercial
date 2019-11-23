@@ -17,8 +17,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -40,6 +38,5 @@
   },
   "devDependencies": {
     "gh-pages": "^2.1.1"
-  },
-  "homepage": "https://marinafaria.github.io/plataforma-comercial"
+  }
 }
