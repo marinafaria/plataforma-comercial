@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const methodOverride = require('method-override');
 
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const app = express();
 const routes = require('./routes');
@@ -18,6 +18,6 @@ app.use(methodOverride('_method'));
 app.use(cors());
 app.use(express.json());
 app.use(routes);
-app.listen(3333); 
+app.listen(process.env.PORT || 3333); 
 
 // npm run dev
